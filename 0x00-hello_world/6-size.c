@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - Entry point, print values different data types
+ * main - Entry point
  *
  * return: Always 0 (Success)
  */
