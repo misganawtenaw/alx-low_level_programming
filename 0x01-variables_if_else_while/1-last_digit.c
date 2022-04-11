@@ -5,7 +5,9 @@
 /**
  * main - entry point
  *
- * Return: Always 0 (success/correct)
+ * Descripition: prints a number and it,s last digit along with whether its
+ * last digit is 0, greater than 5, or less than 6 not 0.
+ * Return: 0
  */
 int main(void)
 {
