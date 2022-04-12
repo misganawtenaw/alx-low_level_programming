@@ -1,8 +1,9 @@
 #include <main.h>
+
 /**
- * main-main block
- * Descripition:print -putchar in a new line
- * Return: 0
+ * main - entry point
+ * Descripition: print -putchar in a new line
+ * Return: The program should return 0
  */
 int main(void)
 {
