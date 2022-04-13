@@ -21,7 +21,7 @@ for (column = 0; column <= n; column++)
 {
 product = row * column;
 
-if (column == 0)	
+if (column == 0)
 _putchar('0');
 
 else if (product < 10)
