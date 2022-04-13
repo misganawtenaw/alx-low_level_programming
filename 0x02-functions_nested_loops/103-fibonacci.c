@@ -2,7 +2,6 @@
 /**
  * main - prints the sum of even-valued fibonacci
  *         sequance terms not exceeding 4000000.
- * 
  * Retrun: 0
  */
 int main(void)
