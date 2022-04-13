@@ -1,4 +1,4 @@
-#include "main.h"i
+#include "main.h"
 #include <stdio.h>
 /**
  * prinit_to_98 - prints all natural numbers from input to 98,
