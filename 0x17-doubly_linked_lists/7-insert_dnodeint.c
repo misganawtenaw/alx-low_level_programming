@@ -1,52 +1,48 @@
 #include "lists.h"
-
 /**
- * insert_dnodeint_at_index - inserts node at index
- * @h: head of node
- * @idx: index to insert node
- * @n: data for new node
- * Return: list with inserted node
+ *insert_dnodeint_at_index- inserts node anywear.
+ *@h: a ptr to ptr the listint_t list
+ *@idx: is the index of the node, starting at 0
+ *@n: the integer for the new node to contain
+ *Return: the address of the new node, or NULL if it failed.
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int count = 1;
-	dlistint_t *temp = NULL, *new = NULL;
 
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL || h == NULL)
+	dlistint_t *newnode;
+	dlistint_t *traverse;
+	unsigned int pos;
+
+	if (h == NULL)
 		return (NULL);
-	new->n = n;
-	temp = *h;
+	newnode = malloc(sizeof(dlistint_t));
+	if (newnode == NULL)
+		return (NULL);
+	newnode->n = n;
 	if (idx == 0)
 	{
-		*h = new;
-		new->next = temp;
-		new->prev = NULL;
-		temp->prev = new;
-		return (new);
+		newnode->next = *h;
+		newnode->prev = NULL;
+		if (newnode->next != NULL)
+			newnode->next->prev = newnode;
+		*h = newnode;
 	}
-	while (temp->next != NULL)
+	else
 	{
-		if (count == idx) /* found back */
+		traverse = *h;
+		for (pos = 0; traverse != NULL && pos < (idx - 1); pos++)
+			traverse = traverse->next;
+		if (traverse == NULL)
 		{
-			new->prev = temp; /* current prev to back link */
-			new->next = temp->next; /* current next to front link*/
-			temp->next = new; /* back next link */
-			new->next->prev = new; /* from prev link */
+			free(newnode);
+			return (NULL);
 		}
-		temp = temp->next;
-		count++;
+		newnode->next = traverse->next;
+		newnode->prev = traverse;
+		if (traverse->next != NULL)
+			traverse->next->prev = newnode;
+		traverse->next = newnode;
 	}
-	if (count == idx) /* end of DLL */
-	{
-		new->prev = temp; /* current prev to back link */
-		new->next = NULL; /* current next to NULL*/
-		temp->next = new; /* back next link */
-	}
-	if (count < idx)
-	{
-		free(new);
-		return (NULL);
-	}
-	return (new);
+	return (newnode);
+
 }
